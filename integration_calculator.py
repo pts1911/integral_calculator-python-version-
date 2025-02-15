@@ -25,7 +25,6 @@ def parse_input(value):
 
 def evaluate_function(x, func_str):
     try:
-        # Ensure x is a numpy array for consistent evaluation
         x = np.array(x, dtype=np.float64)
         x_sym = symbols('x')
         func_str = re.sub(r'(\d)([a-zA-Z])', r'\1*\2', func_str)
@@ -100,9 +99,7 @@ history = []
 def update_history(new_record):
     # 全局变量history，用于存储历史记录
     global history
-    # 将新的记录添加到history列表中
     history.append(new_record)
-    # 如果history列表的长度超过5，则移除第一个元素
     if len(history) > 5:
         history.pop(0)
     # 清空history_listbox中的所有项
